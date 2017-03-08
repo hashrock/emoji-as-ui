@@ -1,0 +1,17 @@
+{
+  "name": "emoui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "emoji-images": "^0.1.1",
+    "emoji-parser": "^0.1.2",
+    "emojis": "^1.0.9",
+    "node-emoji": "^1.5.1"
+  }
+}
