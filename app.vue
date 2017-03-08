@@ -29,7 +29,6 @@
     function replaceNth(src, search, index, rep){
         var nth = 0;
         return src.replace(new RegExp(search, "g"), function (match, i, original) {
-            console.log(search, nth)
             nth++;
             return (nth === index) ? rep : match;
         });
