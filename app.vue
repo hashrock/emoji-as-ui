@@ -29,6 +29,7 @@
     function replaceNth(src, search, index, rep){
         var nth = 0;
         return src.replace(new RegExp(search, "g"), function (match, i, original) {
+            console.log(search, nth)
             nth++;
             return (nth === index) ? rep : match;
         });
@@ -47,10 +48,10 @@
     function injectSpan(input){
         input = injectSpanItem(input, "apple")
         input = injectSpanItem(input, "pineapple")
-        /*
         input = injectSpanItem(input, "white_medium_square")
         input = injectSpanItem(input, "white_check_mark")
-        */
+        input = injectSpanItem(input, "moneybag")
+        input = injectSpanItem(input, "fire")
         return input
     }
 
@@ -78,17 +79,46 @@
                         });
                     }
                     //pineapple -> apple
-                    var emojis = document.querySelectorAll('.emoji-pineapple');
+                    emojis = document.querySelectorAll('.emoji-pineapple');
                     for (let i = 0; i < emojis.length; i++) {
                         emojis[i].addEventListener('click', (event)=> {
                             this.msg = replaceNth(this.msg, ":pineapple:", i + 1, ":apple:")
                         });
                     }
+
+                    emojis = document.querySelectorAll('.emoji-white_medium_square');
+                    for (let i = 0; i < emojis.length; i++) {
+                        emojis[i].addEventListener('click', (event)=> {
+                            this.msg = replaceNth(this.msg, ":white_medium_square:", i + 1, ":white_check_mark:")
+                        });
+                    }
+
+                    emojis = document.querySelectorAll('.emoji-white_check_mark');
+                    for (let i = 0; i < emojis.length; i++) {
+                        emojis[i].addEventListener('click', (event)=> {
+                            this.msg = replaceNth(this.msg, ":white_check_mark:", i + 1 , ":white_medium_square:")
+                        });
+                    }
+
+                    emojis = document.querySelectorAll('.emoji-moneybag');
+                    for (let i = 0; i < emojis.length; i++) {
+                        emojis[i].addEventListener('click', (event)=> {
+                            this.msg = replaceNth(this.msg, ":moneybag:", i + 1 , ":moneybag::moneybag:")
+                        });
+                    }
+
+                    emojis = document.querySelectorAll('.emoji-fire');
+                    for (let i = 0; i < emojis.length; i++) {
+                        emojis[i].addEventListener('click', (event)=> {
+                            this.msg = replaceNth(this.msg, ":fire:", i + 1 , "")
+                        });
+                    }
+                    
                 })
             }
         },
         mounted: function () {
-            this.msg = "Welcome to Your Vue.js App\n:apple:\n\n:white_medium_square: TODO\n:white_check_mark: TODO2"
+            this.msg = "Click Emojis!\n:apple: :apple: :apple:\n\n:white_medium_square: TODO\n:white_check_mark: TODO2\n:white_check_mark: TODO3 :fire::fire::fire: \n\n:moneybag:"
         }
     }
 
